@@ -1,13 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- teacherUpdateForm.jsp -->
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>${dto.t_name }정보 수정</title>
-</head>
-<body>
+<%@ include file = "../top.jsp" %>
+
+	<nav aria-label="breadcrumb" style="background-color: #e4e4e4;">
+	  <ol class="breadcrumb justify-content-end" style="padding: 5px 30px 5px 10px;">
+	    <li class="breadcrumb-item ">강사 관리</li>
+	    <li class="breadcrumb-item " aria-current="page">강사 현황</li>
+	    <li class="breadcrumb-item " aria-current="page">강사 정보</li>
+	    <li class="breadcrumb-item " aria-current="page">강사 정보 수정</li>
+	  </ol>
+	</nav>
+	
+	<div class="container" style="min-height: 65vh">
+		<div class="d-flex flex-column justify-content-center align-items-center gap-3">
+			<h1><b>Motionis 강사 정보 수정</b></h1>
+			
+			<div class="d-flex flex-column justify-content-center align-items-center w-100">
+				<div class="col-4 gy-4">
+					<div class="card">
+						<div class="bg-dark p-2 d-flex flex-column justify-content-center align-items-center" style="min-height: 220px;">
+					  		<img src="resources/img/${dto.t_img }" onerror="this.src='resources/img/no-image-icon.png';"/>
+						</div>
+				  		<div class="card-body d-flex flex-column justify-content-between" style="min-height: 280px;">
+				  			<div>
+				  				<h5 class="card-title">${dto.t_name }</h5>
+				  				<hr/>
+				  				<div class="d-flex flex-column gap-1"> 
+				  					<b>수업</b>
+				  					<c:forEach var="var" items="${listClass }"> 
+					  					<div class="form-check">
+										  <input class="form-check-input" type="checkbox" name="t_major" value="${var.c_name }" id="${var.c_name }">
+										  <label class="form-check-label" for="${var.c_name }">
+										    ${var.c_name }
+										  </label>
+										</div>
+									</c:forEach> 
+									
+									<b class="mt-3" >학력</b>
+									<input type="text" name="t_edu" class="form-control form-control-sm" id="t_edu" value="${dto.t_edu }">
+				  				</div>
+				  			</div>
+				  			
+				  			<div class="d-grid gap-3 d-flex justify-content-center align-items-center mt-3">
+				  				<a href="teacherInfo.do?t_code=${dto.t_code }" class="btn btn-secondary w-100">취소</a>
+					    		<input type="submit" value = "수정" class="btn btn-danger w-100">
+				  			</div>
+					  	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%-- 
 	<div align="center">
 		<h1>강사 정보 수정</h1>  
 		<form name = "f" action="teaherUpdate.do" method="post">
@@ -38,5 +83,8 @@
 		</table>
 		</form>
 	</div>
+	 --%>
+	 
+ 	<%@ include file = "../footer.jsp" %>
 </body>
 </html>
