@@ -13,7 +13,7 @@
  		select s_code from studentBaseInfo where s_name = #{s_name} and s_barth = #{s_barth}
  	</select>
 
-	<insert id="insertSSC" parameterType="StudentSelectClassDTO">
+	<insert id="insertStudnetSelectClass" parameterType="StudentSelectClassDTO">
 		insert into studentSelectClass values(#{s_code }, #{c_code}, #{ct_code}, #{c_card}, #{c_payCheck}, to_char(sysdate,'yyyy-mm-dd'))
 	</insert>
 
@@ -21,4 +21,5 @@
  		select * from studentBaseInfo
  	</select>
  	
+
  </mapper>

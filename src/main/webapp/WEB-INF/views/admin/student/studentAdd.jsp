@@ -40,25 +40,18 @@
 				<tr>
 					<td id="classArea" colspan="4"></td>
 				</tr>
-				
 				<tr>
 					<th colspan="5">결제</th>
 				</tr>
 				<tr>
 					<th align="right" colspan="5">
 						할인 <input type="checkbox" name="s_disc" value="할인">
-						결제 방식 | 현금 <input type="radio" name ="s_card" checked="checked" value="현금"> 카드 <input type="radio" name ="s_card" value="카드">
+						결제 방식 | 현금 <input type="radio" name ="c_card" checked="checked" value="현금"> 카드 <input type="radio" name ="c_card" value="카드">
 					</th>
 				</tr>
-				
 				<td align="center" colspan="5"><input type="submit" value="등록"></td>
 				
-			</table>
-			
-			<select onchange="">
-				<option>
-			</select>
-			
+			</table>			
 		</form> 
 	</div>
 	
@@ -115,11 +108,10 @@ function getCtt(num) {
 			
 			let html = '<div id = "__cttArea'+num +'"><select name = "ct_code">';
 			for(var i = 0; i<result.length; i++) {
-				html += '<option value = "result[i].ct_code">개강일 : ' + result[i].c_start_day +'  시간'+ result[i].c_start_time +'~'+result[i].c_end_time+'</option>'	
+				html += '<option value = "' + result[i].ct_code + '">개강일 : ' + result[i].c_start_day +'  시간'+ result[i].c_start_time +'~'+result[i].c_end_time+'</option>'	
 			}
 			html += '</select>';
 			html += `
-				할인 <input type ="checkbox" value = "할인" />
 				수강 유형 <select name = "c_payCheck">
 					<option value = "수강 ">수강
 					<option value = "예정">예정

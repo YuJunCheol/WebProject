@@ -56,9 +56,8 @@ public class StudentController {
 	
 	@RequestMapping("inputStudent.do")
 	public String addStudent(HttpServletRequest req, StudentDTO sDto, StudentSelectClassDTO sscDto) {
-		System.out.println("데이터 확인 : " 	+ sscDto.getC_code());
-		//int res = studentmapper.insertStudent(sDto, sscDto);
-		int res = 0;
+		int res = studentmapper.insertStudent(sDto, sscDto);
+		
 		if (res > 0) {
 			req.setAttribute("msg", "학생등록 성공!! 학생 목록 페이지로 이동합니다.");
 			req.setAttribute("url", "studentIndex.do");
@@ -66,8 +65,6 @@ public class StudentController {
 			req.setAttribute("msg", "학생삭제 실패!! 학생 입력 페이지로 이동합니다.");
 			req.setAttribute("url", "addStudentForm.do");
 		}
-		 
-		
 		
 		return "message";
 	}

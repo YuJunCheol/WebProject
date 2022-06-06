@@ -49,6 +49,11 @@ public class StudentSelectClassDTO {
 	public void setC_payDay(String c_payDay) {
 		this.c_payDay = c_payDay;
 	}
+	@Override
+	public String toString() {
+		return "StudentSelectClassDTO [s_code=" + s_code + ", c_code=" + c_code + ", ct_code=" + ct_code + ", c_card="
+				+ c_card + ", c_payCheck=" + c_payCheck + ", c_payDay=" + c_payDay + "]";
+	}
 	
 	
 	

@@ -22,27 +22,23 @@ public class StudentMapper {
 	public int insertStudent(StudentDTO sDto, StudentSelectClassDTO sscDto) {
 		int res=0;
 		
-		if(sDto.getS_work() == null || sDto.getS_work().equals("")) {
-			sDto.setS_work("없음");
-		}
-		if(sDto.getS_disc()== null || sDto.getS_disc().equals("")) {
-			sDto.setS_disc("정가");
-		}
-		
 		sqlSession.insert("insertStudent", sDto);
 		String s_code = sqlSession.selectOne("selectScode", sDto);
+		String c_codeList[] = sscDto.getC_code().split(",");
+		String ct_codeList[] = sscDto.getCt_code().split(",");
 		
-		System.out.println("Test : " + sDto.getSscList().get(0).getC_code());
+		StudentSelectClassDTO sccValue = new StudentSelectClassDTO();
 		
-		for(int i=0; i<sDto.getSscList().size(); i++) {
-			System.out.println("Count : " + i);
-			if(!sDto.getSscList().get(i).getC_payCheck().equals("수강")) {
-				sDto.getSscList().get(i).setC_code(sscDto.getC_code());
-				sDto.getSscList().get(i).setC_card(sscDto.getC_card());
-				sqlSession.insert("insertSSC",sDto.getSscList().get(i));
-			}
+		for(int i = 0; i< c_codeList.length; i++) {
+			sccValue.setS_code(s_code);
+			sccValue.setC_code(c_codeList[i]);
+			sccValue.setCt_code(ct_codeList[i]);
+			sccValue.setC_card(sscDto.getC_card());
+			sccValue.setC_payCheck(sscDto.getC_payCheck());
+			System.out.println(sccValue.toString());
+			res = sqlSession.insert("insertStudnetSelectClass", sccValue);
 		}
-				
+		
 		return res;
 	}
 	
