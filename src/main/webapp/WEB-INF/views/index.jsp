@@ -16,5 +16,6 @@
 		<a href = "teacherIndex.do">강사 목록 페이지</a>
 	</div>
 	
+	<script src="<c:url value='/resources/js/bootstrap.bundle.min.js' />"></script>
 </body>
 </html>
