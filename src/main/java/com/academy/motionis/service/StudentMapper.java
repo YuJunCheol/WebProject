@@ -1,7 +1,5 @@
 package com.academy.motionis.service;
 
-import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.academy.motionis.model.IndexDTO;
-import com.academy.motionis.model.StudentSelectClassDTO;
 import com.academy.motionis.model.StudentDTO;
-import com.academy.motionis.model.TestDTO;
+import com.academy.motionis.model.StudentSelectClassDTO;
 
 @Service
 public class StudentMapper {
