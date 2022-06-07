@@ -8,7 +8,7 @@
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		  <div class="container container-fluid">
-		    <a class="navbar-brand" href="#">Motionis</a>
+		    <a class="navbar-brand" href="/">Motionis</a>
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		      <span class="navbar-toggler-icon"></span>
 		    </button>
@@ -18,10 +18,10 @@
 		          <a class="nav-link ${fn:contains(URL, 'student') ? 'active' : '' }" aria-current="page" href="studentIndex.do">切积 包府</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link ${fn:contains(URL, 'class') ? 'active' : '' }" href="classIndex.do">碍狼 包府</a>
+		          <a class="nav-link ${fn:contains(URL, 'class') || fn:contains(URL, 'addClassForm') || fn:contains(URL, 'insertClassTimeTableForm') ? 'active' : '' }" href="classIndex.do">碍狼 包府</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link ${fn:contains(URL, 'teacher') ? 'active' : '' }" href="teacherIndex.do">碍荤 包府</a>
+		          <a class="nav-link ${fn:contains(URL, 'teacher') || fn:contains(URL, 'addTeachertForm') ? 'active' : '' }" href="teacherIndex.do">碍荤 包府</a>
 		        </li>
 		      </ul>
 		    </div>
