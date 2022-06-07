@@ -14,7 +14,7 @@
 		<hr width="300" color="green">
 		<h1>학생 등록 페이지</h1>
 		<hr width="300" color="green">
-		<form action="inputStudent.do" method="post">
+		<form action="inputStudent.do" method="post" >
 			<table id ="classTable" border="1">
 				<tr>
 					<th colspan="4">학생</th>

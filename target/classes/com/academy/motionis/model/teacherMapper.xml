@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 	
+ <mapper namespace="com.academy.motionis.model.teacherMapper">
+ 
+ 	<insert id="insertTeacher" parameterType="TeacherDTO">
+ 		insert into teacherBaseInfo values(seq_teacherBaseInfo.nextval, 'TC_'||seq_teacherBaseInfo.nextval, #{t_name}, #{t_edu}, #{t_img},  #{t_major})
+ 	</insert>
+ 
+ 
+ 	<select id="selectTeacherAll" resultType="TeacherDTO">
+ 		select * from teacherBaseInfo
+ 	</select>
+ 	
+ 	<select id="selectTeacher" parameterType="String" resultType="TeacherDTO">
+ 		select * from teacherBaseInfo where t_code = #{code}
+ 	</select>
+ 	
+ 	<delete id="deleteTeacher" parameterType="String">
+ 		delete from teacherBaseInfo where t_code = #{code}
+ 	</delete>
+ 	
+ 	<update id="updateTeacher" parameterType="TeacherDTO">
+ 		update teacherBaseInfo
+ 		set
+ 			t_major = #{t_major}
+ 		where 
+ 			t_code = #{t_code}
+ 	</update>
+ </mapper>
