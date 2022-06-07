@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -138,5 +139,11 @@ public class TeacherController {
 		}
 		
 		return "message";
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value = "selectTeacherList.do")
+	@ResponseBody
+	public List<TeacherDTO> getTeacherList() {
+		return teacherMapper.selectTeacherAll();
 	}
 }

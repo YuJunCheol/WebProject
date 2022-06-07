@@ -11,9 +11,25 @@
 	
 	<div align="center">
 		<h1>Motionis</h1>
-		<a href = "studentIndex.do">학생 목록 페이지.</a>
-		<a href = "classIndex.do">강의 목록 페이지.</a>
-		<a href = "teacherIndex.do">강사 목록 페이지</a>
+		<form action="login.do" method="post">
+			<div id ="__login_table">
+				<div>
+					<input type="checkbox" name ="check_save_user" value="check"> 아이디 저장			
+				</div>
+				<div>
+					<input type = "text" name ="u_id" placeholder="아이디">
+				</div>
+				<div>
+					<input type = "password" name ="u_pw" placeholder="비밀번호">				
+				</div>
+				<div>
+					<button type = "submit">로그인</button>				
+				</div>
+				<div>
+					<a href = "addUserForm.do">회원 가입</a>
+				</div>
+			</div>
+		</form>
 	</div>
 	
 	<script src="<c:url value='/resources/js/bootstrap.bundle.min.js' />"></script>

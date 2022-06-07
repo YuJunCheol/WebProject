@@ -39,7 +39,7 @@ function getIndexList(year) {
 							if(studnetList[s_count].s_code == result[i_count].s_code){
 								let content =`<li>\${result[i_count].c_name}</li>`;
 								
-								console.log(result[i_count].c_paycheck);
+								// console.log(result[i_count].c_paycheck);
 								 
 								if(result[i_count].c_paycheck == '예정') { 
 									content = `<li >\${result[i_count].c_name}(예정)</li>`;
