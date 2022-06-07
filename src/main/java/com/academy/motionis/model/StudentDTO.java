@@ -17,14 +17,6 @@ public class StudentDTO {
 	private String s_join;				// 가입일
 	private String s_disc;	// 할인 유무
 	
-	private List<StudentSelectClassDTO> sscList;
-	
-	public List<StudentSelectClassDTO> getSscList() {
-		return sscList;
-	}
-	public void setSscList(List<StudentSelectClassDTO> sscList) {
-		this.sscList = sscList;
-	}
 	
 	public String getS_addr() {
 		return s_addr;
@@ -115,7 +107,14 @@ public class StudentDTO {
 		this.s_disc = s_disc;
 	}
 
+	@Override
+	public String toString() {
+		return "StudentDTO [s_no=" + s_no + ", s_code=" + s_code + ", s_name=" + s_name + ", s_barth=" + s_barth
+				+ ", s_email=" + s_email + ", s_call=" + s_call + ", s_addr=" + s_addr + ", s_school=" + s_school
+				+ ", s_major=" + s_major + ", s_work=" + s_work + ", s_join=" + s_join + ", s_disc=" + s_disc + "]";
+	}
 
+	
 	
 	
 	

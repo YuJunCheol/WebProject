@@ -1,5 +1,6 @@
 package com.academy.motionis.service;
 
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class StudentMapper {
 		String s_code = sqlSession.selectOne("selectScode", sDto);
 		String c_codeList[] = sscDto.getC_code().split(",");
 		String ct_codeList[] = sscDto.getCt_code().split(",");
+		String c_payCheck[] = sscDto.getC_payCheck().split(",");
 		
 		StudentSelectClassDTO sccValue = new StudentSelectClassDTO();
 		
@@ -34,7 +36,7 @@ public class StudentMapper {
 			sccValue.setC_code(c_codeList[i]);
 			sccValue.setCt_code(ct_codeList[i]);
 			sccValue.setC_card(sscDto.getC_card());
-			sccValue.setC_payCheck(sscDto.getC_payCheck());
+			sccValue.setC_payCheck(c_payCheck[i]);
 			System.out.println(sccValue.toString());
 			res = sqlSession.insert("insertStudnetSelectClass", sccValue);
 		}
@@ -45,5 +47,8 @@ public class StudentMapper {
 	public List<StudentDTO> selectAllStudent(){
 		return sqlSession.selectList("selectAllStudent");
 	}
-
+	
+	public List<IndexDTO> selectIndex(String year) {
+		return sqlSession.selectList("selectStIndexInfo",year);
+	}
 }
