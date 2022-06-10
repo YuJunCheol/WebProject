@@ -30,12 +30,6 @@
  		delete from classCateBaseInfo where c_code = #{c_code}
  	</delete>
  	
- 	<select id="selectStClass" resultType="ClassDTO" parameterType="String">
- 		select c_no, c_code, c_name, c_teacher, c_start, c_end, c_day, c_max, c_tuition, c_start_time, c_end_time
-		from studentbaseinfo,joinbaseinfo,classbaseinfo
-		where s_code = js_code and jc_code = c_code and s_code = #{s_code}
- 	</select>	
- 	
  	<insert id="insertClassTimeTable" parameterType="ClassTimeTableDTO">
  		insert into classTimeTable values(#{c_code},#{c_start_day},#{c_end_day},#{c_day},#{c_start_time},#{c_end_time},#{c_limit}, #{ct_code})
  	</insert>
@@ -73,4 +67,6 @@
  	<select id="selectClassName" resultType="ClassDTO">
  		select cl.c_code, max(cl.c_name) as c_name from classcatebaseinfo cl join classtimetable ct on (cl.c_code = ct.c_code ) GROUP BY cl.c_code
  	</select>
+ 	
+ 	
  </mapper>

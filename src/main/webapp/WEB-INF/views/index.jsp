@@ -27,7 +27,7 @@
 				</div>
 				<div>
 					<a href = "addUserForm.do">회원 가입</a>
-				</div>
+				</div> 
 			</div>
 		</form>
 	</div>

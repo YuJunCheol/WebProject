@@ -1,7 +1,6 @@
 package com.academy.motionis.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.academy.motionis.model.ClassDTO;
 import com.academy.motionis.model.ClassTimeTableDTO;
+import com.academy.motionis.model.TeacherDTO;
 
 @Service
 public class ClassMapper {
@@ -98,5 +98,9 @@ public class ClassMapper {
 	
 	public List<ClassDTO> selectClassNmae() {
 		return sqlSession.selectList("selectClassName");
+	}
+	
+	public List<ClassDTO> selectClassToTeacher(TeacherDTO dto) {
+		return sqlSession.selectList("selectClassToT_name", dto);
 	}
 }

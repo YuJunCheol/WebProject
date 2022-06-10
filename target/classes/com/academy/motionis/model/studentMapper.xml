@@ -28,7 +28,7 @@
 				c.c_name, ct.c_start_day, ct.c_end_day, ct.ct_code
 			from 
 				classtimetable ct, 
-				classbaseinfo c
+				classcatebaseinfo c
 			where 
 				c.c_code = ct.c_code 
 				and 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ include file = "../top.jsp" %>
+<%@ include file = "../header.jsp" %>
 	<div align="center">
 		<h1>학생 목록 페이지</h1> 
 		<input type = "button" value ="학생등록" onclick = "location.href='addStudentForm.do'">
@@ -26,7 +26,8 @@ function getIndexList(year) {
 		data :JSON.stringify({
 			year : year
 		}), 
-		success : function(result) { 
+		success : function(result) {
+			console.log("데이터 확인 : ", result); 
 			let html ="";  
 			for(let s_count = 0; s_count < studnetList.length; s_count++){
 				html += `<tr><td>\${studnetList[s_count].s_name }</td>`; 
@@ -39,7 +40,7 @@ function getIndexList(year) {
 							if(studnetList[s_count].s_code == result[i_count].s_code){
 								let content =`<li>\${result[i_count].c_name}</li>`;
 								
-								// console.log(result[i_count].c_paycheck);
+								console.log(result[i_count].c_paycheck);
 								 
 								if(result[i_count].c_paycheck == '예정') { 
 									content = `<li >\${result[i_count].c_name}(예정)</li>`;
