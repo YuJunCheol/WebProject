@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <!-- <div class="text-bg-dark d-flex flex-column justify-content-center align-items-center p-4 mt-5">
 	<span class="h6">MOTIONIS(모션이즈)</span>
