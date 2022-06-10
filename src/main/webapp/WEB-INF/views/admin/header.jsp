@@ -25,6 +25,10 @@
 		        </li>
 		      </ul>
 		    </div>
+		    <div>
+			    <span class="text-light me-2"> ${sessionScope.SESSION_USER.u_id }</span>
+			    <a href="logout.do" class="btn btn-outline-light btn-sm" >·Î±×¾Æ¿ô</a>
+		    </div>
 		  </div>
 		</nav>
 	</header>
