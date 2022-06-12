@@ -70,7 +70,7 @@ public class StudentController {
 	@RequestMapping("inputStudent.do")
 	public String addStudent(HttpServletRequest req, StudentDTO sDto, StudentSelectClassDTO sscDto) {
 		int res = studentmapper.insertStudent(sDto, sscDto);
-		
+
 		if (res > 0) {
 			req.setAttribute("msg", "학생등록 성공!! 학생 목록 페이지로 이동합니다.");
 			req.setAttribute("url", "studentIndex.do");
@@ -106,5 +106,8 @@ public class StudentController {
 		return iList;
 	}
 	
-	
+	@RequestMapping(value="detailStudent.do")
+	public String detailStudent() {
+		return "admin/student/studentDetail";
+	}
 }

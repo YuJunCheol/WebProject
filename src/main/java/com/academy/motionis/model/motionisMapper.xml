@@ -37,4 +37,18 @@
  		select * from studentselectclass where ct_code = #{ct_code}
  	</select>
  	
+ 	<insert id="insertCheck" parameterType="CheckDTO">
+ 		insert into checkInfo values(#{t_name},#{c_code},#{ct_code},#{s_code},#{ck_status}, #{to_day})
+ 	</insert>
+ 	
+ 	
+ 	
+ 	<select id="if_check" parameterType="CheckDTO" resultType="CheckDTO">
+ 		select * from checkInfo where to_day = #{to_day}
+ 	</select>
+ 	
+ 	<update id="update_check" parameterType="CheckDTO">
+ 		update checkInfo set ck_status = #{ck_status} 
+ 	</update>
+ 	
  </mapper>

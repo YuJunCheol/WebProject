@@ -44,7 +44,7 @@ public class MotionisController {
 	private StudentMapper studentMapper;
 	
 	//#1__ 메인 이동 __ //
-	@RequestMapping(value = {"/","index.do"})
+	@RequestMapping(value = {"/","index.do","logout.do"})
 	public String index(HttpServletRequest req) {
 		
 		HttpSession session =  req.getSession();
@@ -97,13 +97,14 @@ public class MotionisController {
 		return "message";
 	}
 	
+	
 	@RequestMapping(value = "clientIndex.do")
 	public String clientIndex(HttpServletRequest req) {
 		String u_code = req.getParameter("u_code");
 		
 		// 강사이름 구하기
 		TeacherDTO t_dto = teacherMapper.selectTeacher(u_code);
-		
+	
 		// 이름으로 강사가 진행하는 수업 리스트 가져오기
 		List<ClassDTO> ct_list = motionisMapper.getClassCate(t_dto);
 		
@@ -144,10 +145,14 @@ public class MotionisController {
 	@RequestMapping(value ="insertCheck.do")
 	public String insertCheck(HttpServletRequest req, CheckDTO dto) {
 		
-		System.out.println(dto.toString());
-		
-		req.setAttribute("msg", "출석부 등록 완료 메인 화면으로 이동합니다.");
-		req.setAttribute("url", "index.do");
+		int res = motionisMapper.insertCheck(dto);
+		if(res > 0) {
+			req.setAttribute("msg", "출석부 등록 완료 메인 화면으로 이동합니다.");
+			req.setAttribute("url", "index.do");			
+		}else {
+			req.setAttribute("msg", "출석부 등록 실패 메인 화면으로 이동합니다.");
+			req.setAttribute("url", "index.do");
+		}
 		
 		return "message";
 	}

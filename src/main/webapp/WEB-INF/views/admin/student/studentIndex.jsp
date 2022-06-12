@@ -72,7 +72,7 @@
 			success : function(result) { 
 				let html ="";  
 				for(let s_count = 0; s_count < studnetList.length; s_count++){
-					html += `<tr><td>\${studnetList[s_count].s_name }</td>`; 
+					html += `<tr><td><a href="<c:url value='detailStudent.do' />">\${studnetList[s_count].s_name }</a></td>`; 
 					
 					for(let month = 1; month < 13; month++) {
 						html += `<td><ul>`;

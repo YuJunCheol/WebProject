@@ -39,13 +39,13 @@
 	</beans:bean>
 
 	<!-- 인터셉터 설정  -->
-	<beans:bean id="loginInerceptor" class="com.academy.motionis.interceptor.LoginInterceptor"/>
+	<!-- <beans:bean id="loginInerceptor" class="com.academy.motionis.interceptor.LoginInterceptor"/>
 	<interceptors>
  		<interceptor>
   			<mapping path="/**"/>
-  			<!-- <exclude-mapping path="/addUserForm.do" /> -->
+  			<exclude-mapping path="/addUserForm.do" />
 			<beans:ref bean="loginInerceptor"/>
 		</interceptor> 
-	</interceptors>
+	</interceptors> -->
 
 </beans:beans>
