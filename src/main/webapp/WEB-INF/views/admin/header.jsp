@@ -23,9 +23,15 @@
 		        <li class="nav-item">
 		          <a class="nav-link ${fn:contains(URL, 'teacher') || fn:contains(URL, 'Teacher') ? 'active' : '' }" href="teacherIndex.do">강사 관리</a>
 		        </li>
+		        
+		        <li class="nav-item d-block d-lg-none mt-1">
+		          <span class="text-light me-2"> ${sessionScope.SESSION_USER.u_id }</span>
+        		  <a href="logout.do" class="btn btn-outline-light btn-sm" >로그아웃</a>
+		          <%-- <a class="nav-link ${fn:contains(URL, 'teacher') || fn:contains(URL, 'Teacher') ? 'active' : '' }" href="teacherIndex.do">강사 관리</a> --%>
+		        </li>
 		      </ul>
 		    </div>
-		    <div>
+		    <div class="d-none d-md-none d-lg-block">
 			    <span class="text-light me-2"> ${sessionScope.SESSION_USER.u_id }</span>
 			    <a href="logout.do" class="btn btn-outline-light btn-sm" >로그아웃</a>
 		    </div>
