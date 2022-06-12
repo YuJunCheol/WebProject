@@ -6,16 +6,16 @@
 <meta charset="EUC-KR">
 <title>학생 정보</title>
 
-		<script type="text/javascript">
-		
-		function checkDel(s_code){
-			var isDel = window.confirm("정말로 삭제하시겠습니까?")
-			if (isDel){
-				location.href="deleteStudent.do?s_code=" + s_code
-			}
-		}
-			
-		</script>
+<script type="text/javascript">
+
+function checkDel(s_code){
+	var isDel = window.confirm("정말로 삭제하시겠습니까?")
+	if (isDel){
+		location.href="deleteStudent.do?s_code=" + s_code
+	}
+}
+	
+</script>
 
 </head>
 <body>
@@ -41,13 +41,6 @@
 					<input type = "hidden" name = "s_addr" value = "${student.s_addr }">
 				</tr>
 				<tr>
-					<th>학교</th><td>${student.s_school }</td>
-					<input type = "hidden" name = "s_school" value = "${student.s_school }">
-					
-					<th>전공</th><td>${student.s_dept }</td>
-					<input type = "hidden" name = "s_dept" value = "${student.s_dept }">
-				</tr>
-				<tr>
 					<th>이메일</th><td colspan="3">${student.s_email }</td>
 					<input type ="hidden" name = "s_email" value = "${student.s_email }">
 				</tr>
@@ -59,46 +52,8 @@
 					<th>입학일</th><td colspan="3">${student.s_join }</td>
 					<input type = "hidden" name = "s_join" value = "${student.s_join }">
 				</tr>
-				<tr>
-					<th>할인 이력</th> 
-					<c:if test="${student.s_class_discount eq 1 }">
-						<td>있음</td>
-					</c:if>
-					<c:if test="${student.s_class_discount eq 0 }">
-						<td>없음</td>
-					</c:if>
-					<input type = "hidden" name = "s_class_discount" value = "${student.s_class_discount }">
-					
-					<c:if test="${student.s_class_card eq 1}">
-						<th>결제 방법</th><td>카드</td>					
-					</c:if>
-					<c:if test="${student.s_class_card eq 0}">
-						<th>결제 방법</th><td>현금</td>					
-					</c:if>
-					<input type = "hidden" name = "s_class_card" value = "${student.s_class_card }">
-				</tr>
 				<!-- 수강하는 수업 정보를 나열  -->
-				<tr>
-					<th>수강 과목 명 </th> <th>요일</th> <th>시간</th> <th>납부현황</th>
-				</tr>
-				<tr>
-					<c:forEach var = "cl" items="${listClass }">
-						<c:forEach var = "ji" items="${listJoin }">
-							<c:if test="${cl.c_code eq ji.jc_code }">
-								<td>${cl.c_name }</td>
-								<td>${cl.c_day }</td>
-								<td>${cl.c_start_time } ~ ${cl.c_end_time }</td>
-								<c:if test="${ji.payInfo eq 1}">
-									<td>납부</td>													
-								</c:if>
-								<c:if test="${ji.payInfo ne 1}">
-									<td>미납</td>										
-								</c:if>
-								
-							</c:if>
-						</c:forEach>
-					</c:forEach>
-				</tr>
+				
 				<tr>
 					<td align="center" colspan="4" >
 						<button type = "submit">수정</button>

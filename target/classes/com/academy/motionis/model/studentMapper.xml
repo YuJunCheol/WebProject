@@ -34,9 +34,12 @@
 				and 
 				ct.c_start_day like #{year }||'%' ) c, 
 			studentselectclass s
-		where 
+		where
 			c.ct_code = s.ct_code
  	</select>
  	
+ 	<select id="selectStudent" parameterType="String" resultType="StudentDTO">
+ 		select * from studentBaseInfo where s_code = #{s_code}
+ 	</select>
 
  </mapper>

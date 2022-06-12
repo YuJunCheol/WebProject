@@ -70,9 +70,9 @@
 				year : year
 			}), 
 			success : function(result) { 
-				let html ="";  
+				let html ="";
 				for(let s_count = 0; s_count < studnetList.length; s_count++){
-					html += `<tr><td><a href="<c:url value='detailStudent.do' />">\${studnetList[s_count].s_name }</a></td>`; 
+					html += `<tr><td><a href="detailStudent.do?s_code=\${studnetList[s_count].s_code}">\${studnetList[s_count].s_name }</a></td>`; 
 					
 					for(let month = 1; month < 13; month++) {
 						html += `<td><ul>`;
