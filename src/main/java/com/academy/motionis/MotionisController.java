@@ -44,12 +44,18 @@ public class MotionisController {
 	private StudentMapper studentMapper;
 	
 	//#1__ 메인 이동 __ //
-	@RequestMapping(value = {"/","index.do","logout.do"})
-	public String index(HttpServletRequest req) {
+	@RequestMapping(value = {"/","index.do"})
+	public String index(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		
-		HttpSession session =  req.getSession();
-		
-		req.setAttribute("user", session.getAttribute("User"));
+		HttpSession session =  req.getSession(false);
+		if (session != null && session.getAttribute("SESSION_USER") != null) {
+			LoginDTO user = (LoginDTO) session.getAttribute("SESSION_USER");
+			if(user.getU_access().equals("admin")) {
+				res.sendRedirect(req.getContextPath() + "/studentIndex.do") ;
+			}else if (user.getU_access().equals("teacher")) {
+				res.sendRedirect(req.getContextPath() + "/clientIndex.do?u_code=" + user.getU_code()) ;
+			}
+		}
 		
 		return "index";
 	}
@@ -82,7 +88,7 @@ public class MotionisController {
 		LoginDTO user = motionisMapper.login(dto);	
 
 		//System.out.println("데이터 넘어온 후 : " + user.toString());
-		session.setAttribute("User", user);
+		session.setAttribute("SESSION_USER", user);
 		if(user.getU_access().equals("admin")) {
 			req.setAttribute("msg", "관리자로 접속하셧습니다 관리자 페이지로 이동합니다.");	
 			req.setAttribute("url", "studentIndex.do");
@@ -95,6 +101,18 @@ public class MotionisController {
 		}
 		
 		return "message";
+	}
+	
+	//#logout__로그아웃 관련 __ //
+	@RequestMapping(value = "logout.do")
+	public void logout(HttpServletRequest req, HttpServletResponse res) throws IOException {
+		
+		HttpSession session =  req.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
+
+		res.sendRedirect(req.getContextPath() + "/") ;
 	}
 	
 	

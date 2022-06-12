@@ -13,12 +13,14 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
+		
+//		System.out.println("request.getServletPath() : " + request.getServletPath());
+		
 		if (!request.getServletPath().contains("/resources")
 				&&!request.getServletPath().equals("/") 
 				&& !request.getServletPath().equals("/index.do")
 				&& !request.getServletPath().equals("/login.do")
-				&& !request.getServletPath().equals("/addUserForm.do")
+				&& !request.getServletPath().equals("/logout.do")
 
 				&& !request.getServletPath().equals("/addUser.do")
 				&& !request.getServletPath().equals("/addUserForm.do")
