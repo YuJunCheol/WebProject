@@ -48,4 +48,8 @@ public class StudentMapper {
 	public List<IndexDTO> selectIndex(String year) {
 		return sqlSession.selectList("selectStIndexInfo",year);
 	}
+	
+	public StudentDTO selectStudent(String s_code ) {
+		return sqlSession.selectOne("selectStudent",s_code);
+	}
 }

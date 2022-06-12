@@ -107,7 +107,12 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value="detailStudent.do")
-	public String detailStudent() {
+	public String detailStudent(HttpServletRequest req) {
+		String s_code = req.getParameter("s_code");
+		StudentDTO dto = studentmapper.selectStudent(s_code);
+		
+		req.setAttribute("student",	dto);
+		
 		return "admin/student/studentDetail";
 	}
 }
