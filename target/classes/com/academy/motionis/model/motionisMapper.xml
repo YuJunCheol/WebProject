@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 	
+ <mapper namespace="com.academy.motionis.model.motionisMapper">
+ 
+ 	<insert id="insertLogin" parameterType="LoginDTO">
+ 		insert into loginInfo values (#{u_code}, #{u_id}, #{u_pw}, #{u_access})
+ 	</insert>
+ 	
+ 	<select id="selectLogin" parameterType="LoginDTO" resultType="LoginDTO">
+ 		select * 
+ 		from loginInfo 
+ 		where 
+ 			u_id = #{u_id} 
+ 			and 
+ 			u_pw = #{u_pw}
+ 	</select>
+ 	
+ 	<select id="selectCheckList" resultType="CheckListDTO">
+ 		select t.t_name, c.c_name, c.c_start_day, c.c_end_day, c.c_day,c.c_start_time, c.ct_code
+		from teacherbaseinfo t INNER JOIN (
+		select c.c_teacher t_name, c_name, c_start_day, c_end_day, c_day, c_start_time, ct.ct_code
+		from classcatebaseinfo c INNER JOIN classtimetable ct ON c.c_code = ct.c_code) c ON t.t_name = c.t_name
+ 	</select>
+ 	
+ 	<select id="selectClassFromTname" parameterType="TeacherDTO" resultType="ClassDTO">
+ 		select * from classcatebaseinfo where c_teacher = #{t_name}
+ 	</select>
+ 	
+ 	<select id="getClassList" parameterType="String" resultType="ClassTimeTableDTO">
+ 		select * from classtimetable where c_code = #{c_code}
+ 	</select>
+ 	
+ 	<select id="getStCkList" parameterType="String" resultType="StudentSelectClassDTO">
+ 		select * from studentselectclass where ct_code = #{ct_code}
+ 	</select>
+ 	
+ 	<insert id="insertCheck" parameterType="CheckDTO">
+ 		insert into checkInfo values(#{t_name},#{c_code},#{ct_code},#{s_code},#{ck_status}, #{to_day})
+ 	</insert>
+ 	
+ 	
+ 	
+ 	<select id="if_check" parameterType="CheckDTO" resultType="CheckDTO">
+ 		select * from checkInfo where to_day = #{to_day}
+ 	</select>
+ 	
+ 	<update id="update_check" parameterType="CheckDTO">
+ 		update checkInfo set ck_status = #{ck_status} 
+ 	</update>
+ 	
+ </mapper>

@@ -1,10 +1,12 @@
 package com.academy.motionis;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.academy.motionis.model.ClassDTO;
 import com.academy.motionis.model.ClassTimeTableDTO;
+import com.academy.motionis.model.IndexDTO;
 import com.academy.motionis.model.StudentDTO;
 import com.academy.motionis.model.StudentSelectClassDTO;
 import com.academy.motionis.service.ClassMapper;
@@ -34,7 +37,17 @@ public class StudentController {
 		
 		List<StudentDTO> listStudent = studentmapper.selectAllStudent();
 		
-		req.setAttribute("listStudent", listStudent);
+		String jString = null;
+		
+		ObjectMapper mp = new ObjectMapper();
+		try {
+			jString = mp.writeValueAsString(listStudent);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		req.setAttribute("listStudent", jString);
 		
 		return "admin/student/studentIndex";
 	}
@@ -57,7 +70,7 @@ public class StudentController {
 	@RequestMapping("inputStudent.do")
 	public String addStudent(HttpServletRequest req, StudentDTO sDto, StudentSelectClassDTO sscDto) {
 		int res = studentmapper.insertStudent(sDto, sscDto);
-		
+
 		if (res > 0) {
 			req.setAttribute("msg", "학생등록 성공!! 학생 목록 페이지로 이동합니다.");
 			req.setAttribute("url", "studentIndex.do");
@@ -86,7 +99,20 @@ public class StudentController {
 		return cttList;
 	}
 	
-	 
+	@RequestMapping(method=RequestMethod.POST, value="selectIndex.do")
+	@ResponseBody
+	public List<IndexDTO> selectIndexList(@RequestBody Map<String,String> map,HttpServletRequest req) {
+		List<IndexDTO> iList = studentmapper.selectIndex((String) map.get("year"));
+		return iList;
+	}
 	
-	
+	@RequestMapping(value="detailStudent.do")
+	public String detailStudent(HttpServletRequest req) {
+		String s_code = req.getParameter("s_code");
+		StudentDTO dto = studentmapper.selectStudent(s_code);
+		
+		req.setAttribute("student",	dto);
+		
+		return "admin/student/studentDetail";
+	}
 }

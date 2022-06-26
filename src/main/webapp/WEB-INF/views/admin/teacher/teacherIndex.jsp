@@ -12,7 +12,7 @@
 	<%@ include file = "../header.jsp" %>
 
 	<nav aria-label="breadcrumb" style="background-color: #e4e4e4;">
-	  <ol class="breadcrumb justify-content-end" style="padding: 15px 30px 5px 10px;">
+	  <ol class="breadcrumb justify-content-end" style="padding: 10px 30px 0px 10px;">
 	    <li class="breadcrumb-item ">강사 관리</li>
 	    <li class="breadcrumb-item " aria-current="page">강사 현황</li>
 	  </ol>
